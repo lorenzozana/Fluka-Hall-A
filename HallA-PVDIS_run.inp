@@ -2,7 +2,7 @@ TITLE
 HallA
 GLOBAL                                          1.        1.
 DEFAULTS                                                              NEW-DEFA
-BEAM           -11.0       0.0     0.136       0.5       0.5          ELECTRON
+BEAM            -5.9       0.0     0.136       0.5       0.5          ELECTRON
 PHOTONUC          1.                        VACUUM  @LASTMAT
 PHOTONUC          1.                        VACUUM  @LASTMAT          ELECTNUC
 BEAMPOS          0.0       0.0      -20.       0.0       0.0
@@ -106,7 +106,7 @@ MAT-PROP                             76.     BORON
 STERNHEI      2.8477    0.0305    1.9688   0.56224    2.4512      0.14BORON
 COMPOUND        -0.3    COPPER      -0.7  TUNGSTEN                    CW70
 ASSIGNMA      VACUUM  logicMot
-ASSIGNMA         AIR      hall     hall1
+ASSIGNMA         AIR      hall    hall53
 ASSIGNMA      VACUUM   BEAMVAC
 ASSIGNMA     AL-6061   BEAM_AL
 ASSIGNMA    Stainles  SEP_PIPE
@@ -809,7 +809,109 @@ USRBIN           10.   DOSE-EQ      -52.    30000.    30358.    30000.bdoseeq
 USRBIN       -30000.      358.   -30000.       60.       75.       60. &
 USRBIN           10.      DOSE      -52.    30000.    30358.    30000.bdose
 USRBIN       -30000.      358.   -30000.       60.       75.       60. &
-USRBDX           -1.   NEUTRON      -53.      hall     hall1          n_roof
+USRBDX           -1.   NEUTRON      -53.      hall     hall1          n_roof1
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall2          n_roof2
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall3          n_roof3
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall4          n_roof4
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall5          n_roof5
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall6          n_roof6
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall7          n_roof7
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall8          n_roof8 
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall9          n_roof9
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall10          n_roof10
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall11          n_roof11
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall12          n_roof12
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall13          n_roof13
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall14          n_roof14
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall15          n_roof15
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall16          n_roof16
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall17          n_roof17
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall18          n_roof18
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall19          n_roof19
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall20          n_roof20
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall21          n_roof21
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall22          n_roof22
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall23          n_roof23
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall24          n_roof24
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall25          n_roof25
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall26          n_roof26
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall27          n_roof27
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall28          n_roof28
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall29          n_roof29
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall30          n_roof30
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall31          n_roof31
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall32          n_roof32
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall33          n_roof33
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall34          n_roof34
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall35          n_roof35
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall36          n_roof36
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall37          n_roof37
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall38          n_roof38
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall39          n_roof39
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall40          n_roof40
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall41          n_roof41
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall42          n_roof42
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall43          n_roof43
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall44          n_roof44
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall45          n_roof45
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall46          n_roof46
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall47          n_roof47
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall48          n_roof48
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall49          n_roof49
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall50          n_roof50
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall51          n_roof51
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall52          n_roof52
 USRBDX          11.0  0.000001     1000.                            1. &
 ROT-DEFI                   0.0       90.       0.0       0.0          Coil1
 ROT-DEFI                   0.0    38.571       0.0       0.0       0.0Coil2
@@ -1083,6 +1185,58 @@ RCC hal_tsub   0.0 -9615.560000000001 400. 0.0 10653.3 0.0 6472.78
 RCC hal_cout   0.0 -447. 400. 0.0 1484.74 0.0 2807.7
 * hall_cylinder_in
 RCC hal_cin    0.0 -298.3 400. 0.0 1336.04 0.0 2651.76
+XYP ht_c1      -2100.
+XYP ht_c2      -2000.
+XYP ht_c3      -1900.
+XYP ht_c4      -1800.
+XYP ht_c5      -1700.
+XYP ht_c6      -1600.
+XYP ht_c7      -1500.
+XYP ht_c8      -1400.
+XYP ht_c9      -1300.
+XYP ht_c10     -1200.
+XYP ht_c11     -1100.
+XYP ht_c12     -1000.
+XYP ht_c13     -900.
+XYP ht_c14     -800.
+XYP ht_c15     -700.
+XYP ht_c16     -600.
+XYP ht_c17     -500.
+XYP ht_c18     -400.
+XYP ht_c19     -300.
+XYP ht_c20     -200.
+XYP ht_c21     -100.
+XYP ht_c22     -0.
+XYP ht_c23     100.0
+XYP ht_c24     200.
+XYP ht_c25     300.
+XYP ht_c26     400.
+XYP ht_c27     500.
+XYP ht_c28     600.
+XYP ht_c29     700.
+XYP ht_c30     800.
+XYP ht_c31     900.
+XYP ht_c32     1000.
+XYP ht_c33     1100.
+XYP ht_c34     1200.
+XYP ht_c35     1300.
+XYP ht_c36     1400.
+XYP ht_c37     1500.
+XYP ht_c38     1600.
+XYP ht_c39     1700.
+XYP ht_c40     1800.
+XYP ht_c41     1900.
+XYP ht_c42     2000.
+XYP ht_c43     2100.
+XYP ht_c44     2200.
+XYP ht_c45     2300.
+XYP ht_c46     2400.
+XYP ht_c47     2500.
+XYP ht_c48     2600.
+XYP ht_c49     2700.
+XYP ht_c50     2800.
+XYP ht_c51     2900.
+XYP ht_c52     3000.
 * hall_vacuum_pipe
 RCC hal_pipe   0.0 0.0 -2194.8 0.0 0.0 2132.3 1.
 * hall_wall_hole
@@ -2317,17 +2471,69 @@ hall         5 +hal_cin -(+Larm_B -Cen_cuR1) -LDp_8 -LDp_9 -(+LTbl_6 -LTbl_7 -LT
                +RD_1_o -RD_2_o +RD_3_o -RD_4_o) -(+RDp_1 -Cen_cuL1) -RDp_2 -RDp_3 -(+RTbl_1 -RTbl_2 -RTbl_3) -(
                +RTbl_4 -RTbl_5) -(+RDp_4 -RDp_5 -RDp_6) -RDp_7 -(+RTbl_6 -RTbl_7 -RTbl_8 -RTbl_9 -Cen_cuL1)
                -RDp_8 -RDp_9 -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -opipe08 -opipe09
-               -opipe10 -opipe11 -opipe12 -RDSh -CShB
+               -opipe10 -opipe11 -opipe12 -RDSh
                | +Larm_B -Cen_cuR1 -LQ1_1_o -LQ1_2_o -(+LQ1_3_o -Cen_cuR1) -LQ2_1_o -LQ2_3_o -LQ2_4_o -LQ2_5_o -(
                +LD_1_o -LD_2_o +LD_3_o -LD_4_o) -(+LDp_1 -Cen_cuR1) -LDp_2 -LDp_3 -(+LTbl_1 -LTbl_2 -LTbl_3) -(
                +LTbl_4 -LTbl_5) -(+LDp_4 -LDp_5 -LDp_6) -LDp_7 -(+LTbl_6 -LTbl_7 -LTbl_8 -LTbl_9 -Cen_cuR1)
                -LDp_8 -LDp_9 -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -opipe08 -opipe09
-               -opipe10 -opipe11 -opipe12 -LDSh -CShB
+               -opipe10 -opipe11 -opipe12 -LDSh
                | +ch_sh_1i -ospipe12
                | +ch_sh_11 -ospipe12
                | +ch_sh_3i
                | +ch_sh_31
-hall1        5 +hal_tin -hal_tsub -hallcut
+hall1        5 +hal_tin -hal_tsub -hallcut +ht_c1
+hall2        5 +hal_tin -hal_tsub -hallcut +ht_c2 -ht_c1
+hall3        5 +hal_tin -hal_tsub -hallcut +ht_c3 -ht_c2
+hall4        5 +hal_tin -hal_tsub -hallcut +ht_c4 -ht_c3
+hall5        5 +hal_tin -hal_tsub -hallcut +ht_c5 -ht_c4
+hall6        5 +hal_tin -hal_tsub -hallcut +ht_c6 -ht_c5
+hall7        5 +hal_tin -hal_tsub -hallcut +ht_c7 -ht_c6
+hall8        5 +hal_tin -hal_tsub -hallcut +ht_c8 -ht_c7
+hall9        5 +hal_tin -hal_tsub -hallcut +ht_c9 -ht_c8
+hall10       5 +hal_tin -hal_tsub -hallcut +ht_c10 -ht_c9
+hall11       5 +hal_tin -hal_tsub -hallcut +ht_c11 -ht_c10
+hall12       5 +hal_tin -hal_tsub -hallcut +ht_c12 -ht_c11
+hall13       5 +hal_tin -hal_tsub -hallcut +ht_c13 -ht_c12
+hall14       5 +hal_tin -hal_tsub -hallcut +ht_c14 -ht_c13
+hall15       5 +hal_tin -hal_tsub -hallcut +ht_c15 -ht_c14
+hall16       5 +hal_tin -hal_tsub -hallcut +ht_c16 -ht_c15
+hall17       5 +hal_tin -hal_tsub -hallcut +ht_c17 -ht_c16
+hall18       5 +hal_tin -hal_tsub -hallcut +ht_c18 -ht_c17
+hall19       5 +hal_tin -hal_tsub -hallcut +ht_c19 -ht_c18
+hall20       5 +hal_tin -hal_tsub -hallcut +ht_c20 -ht_c19
+hall21       5 +hal_tin -hal_tsub -hallcut +ht_c21 -ht_c20
+hall22       5 +hal_tin -hal_tsub -hallcut +ht_c22 -ht_c21
+hall23       5 +hal_tin -hal_tsub -hallcut +ht_c23 -ht_c22
+hall24       5 +hal_tin -hal_tsub -hallcut +ht_c24 -ht_c23
+hall25       5 +hal_tin -hal_tsub -hallcut +ht_c25 -ht_c24
+hall26       5 +hal_tin -hal_tsub -hallcut +ht_c26 -ht_c25
+hall27       5 +hal_tin -hal_tsub -hallcut +ht_c27 -ht_c26
+hall28       5 +hal_tin -hal_tsub -hallcut +ht_c28 -ht_c27
+hall29       5 +hal_tin -hal_tsub -hallcut +ht_c29 -ht_c28
+hall30       5 +hal_tin -hal_tsub -hallcut +ht_c30 -ht_c29
+hall31       5 +hal_tin -hal_tsub -hallcut +ht_c31 -ht_c30
+hall32       5 +hal_tin -hal_tsub -hallcut +ht_c32 -ht_c31
+hall33       5 +hal_tin -hal_tsub -hallcut +ht_c33 -ht_c32
+hall34       5 +hal_tin -hal_tsub -hallcut +ht_c34 -ht_c33
+hall35       5 +hal_tin -hal_tsub -hallcut +ht_c35 -ht_c34
+hall36       5 +hal_tin -hal_tsub -hallcut +ht_c36 -ht_c35
+hall37       5 +hal_tin -hal_tsub -hallcut +ht_c37 -ht_c36
+hall38       5 +hal_tin -hal_tsub -hallcut +ht_c38 -ht_c37
+hall39       5 +hal_tin -hal_tsub -hallcut +ht_c39 -ht_c38
+hall40       5 +hal_tin -hal_tsub -hallcut +ht_c40 -ht_c39
+hall41       5 +hal_tin -hal_tsub -hallcut +ht_c41 -ht_c40
+hall42       5 +hal_tin -hal_tsub -hallcut +ht_c42 -ht_c41
+hall43       5 +hal_tin -hal_tsub -hallcut +ht_c43 -ht_c42
+hall44       5 +hal_tin -hal_tsub -hallcut +ht_c44 -ht_c43
+hall45       5 +hal_tin -hal_tsub -hallcut +ht_c45 -ht_c44
+hall46       5 +hal_tin -hal_tsub -hallcut +ht_c46 -ht_c45
+hall47       5 +hal_tin -hal_tsub -hallcut +ht_c47 -ht_c46
+hall48       5 +hal_tin -hal_tsub -hallcut +ht_c48 -ht_c47
+hall49       5 +hal_tin -hal_tsub -hallcut +ht_c49 -ht_c48
+hall50       5 +hal_tin -hal_tsub -hallcut +ht_c50 -ht_c49
+hall51       5 +hal_tin -hal_tsub -hallcut +ht_c51 -ht_c50
+hall52       5 +hal_tin -hal_tsub -hallcut +ht_c52 -ht_c51
+hall53       5 +hal_tin -hal_tsub -hallcut -ht_c52
 Q1L_I        5 +LQ1_3_o -LQ1_3_i -opipe04 -opipe05 -opipe06 -opipe03 -opipe02 -Cen_cuR1
 Q2L_s        5 +LQ2_1_o -LQ2_1_i
 Q2L_I        5 +LQ2_3_o -LQ2_3_i -opipe08 -opipe09 -Cen_cutR

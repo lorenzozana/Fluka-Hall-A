@@ -7,7 +7,7 @@ Submit: *Default
 Notes:
 {img:MOLLER-hallA_plot05.png}
 Tabs: 0.1 0.32 0.56 0.81 1.0
-Page: Flair
+Page: Geometry
 DefMain: True
 LinkPrg: lfluka
 F77bound: True
@@ -21,14 +21,6 @@ Run: <default>
 	Pid:      0
 	StartRun: 1623700905
 
-	# USRxxx data file: HallA-PVDIS_run_50.bnn
-	Data: \I_\U.\e
-		Unit: 50
-		Type: b
-		Rule: +,\I\d\d\d_fort\.\U
-		Rule: +,\I\d\d\d_ftn\.\U
-	End
-
 	# USRxxx data file: HallA-PVDIS_run_51.bnn
 	Data: \I_\U.\e
 		Unit: 51
@@ -41,6 +33,14 @@ Run: <default>
 	Data: \I_\U.\e
 		Unit: 52
 		Type: b
+		Rule: +,\I\d\d\d_fort\.\U
+		Rule: +,\I\d\d\d_ftn\.\U
+	End
+
+	# USRxxx data file: HallA-PVDIS_run_53.bnx
+	Data: \I_\U.\e
+		Unit: 53
+		Type: x
 		Rule: +,\I\d\d\d_fort\.\U
 		Rule: +,\I\d\d\d_ftn\.\U
 	End
@@ -268,9 +268,9 @@ End
 
 # Geometry Information
 Geometry:
-	Frame.bsplit: 0.5
+	Frame.bsplit: 0.01
 	Frame.tsplit: 0.5
-	Frame.vsplit: 0.5
+	Frame.vsplit: 0.01
 
 	# Layer
 	Layer: Media
@@ -407,7 +407,7 @@ Plot: Blue
 	basisv: 0 0 1
 	boundaries: 1
 	coord: X-Z
-	extends: 29.8669 18.8528
+	extends: 29.8669 1134.94
 	labels: 1
 	layer: Media
 	origin: -1.12455 0 -3.89198
@@ -429,12 +429,12 @@ Plot: Magenta
 	cbtics: 0
 	coord: U-V
 	cpd: 0
-	extends: 3194.79 2016.64
+	extends: 2662.33 1680.54
 	grid: 0
 	index: 0
 	labels: 1
 	layer: 3D
-	origin: 116.121 876.023 55.8812
+	origin: -11.3885 616.638 127.781
 	subtype: Material
 	title: GeoViewer Magenta plot
 	x2log: 0
@@ -1266,7 +1266,7 @@ Plot: MOLLER-hallA_50_plot
 	Type:   USRBIN
 	axes: Auto
 	cbcolors: 30
-	cblog: 1
+	cblog: True
 	cbpalette: FLUKA
 	cbround: 0
 	cbtics: 1
@@ -1288,15 +1288,15 @@ Plot: MOLLER-hallA_50_plot
 	swap: 0
 	title: USRBIN MOLLER-hallA 50
 	with.0: errorbars
-	x2log: 0
+	x2log: False
 	x2tics: 0
-	xlog: 0
+	xlog: False
 	xrebin: 1
-	y2log: 0
+	y2log: False
 	y2tics: 0
-	ylog: 0
+	ylog: False
 	yrebin: 1
-	zlog: 0
+	zlog: False
 	zrebin: 1
 	ztics: 0
 End
@@ -1307,7 +1307,7 @@ Plot: MOLLER-hallA_51_plot
 	Type:   USRBIN
 	axes: Auto
 	cbcolors: 30
-	cblog: 1
+	cblog: True
 	cbpalette: FLUKA
 	cbround: 0
 	cbtics: 1
@@ -1323,21 +1323,21 @@ Plot: MOLLER-hallA_51_plot
 	lw.0: 0
 	max: 2.96515645E-05
 	min: 7.15021208E-18
-	proj: Z
+	proj: Y
 	ps.0: 0
 	pt.0: 0
 	swap: 0
 	title: USRBIN MOLLER-hallA 51
 	with.0: errorbars
-	x2log: 0
+	x2log: False
 	x2tics: 0
-	xlog: 0
+	xlog: False
 	xrebin: 1
-	y2log: 0
+	y2log: False
 	y2tics: 0
-	ylog: 0
+	ylog: False
 	yrebin: 1
-	zlog: 0
+	zlog: False
 	zrebin: 1
 	ztics: 0
 End
@@ -1350,7 +1350,7 @@ Plot: MOLLER-hallA_52_plot
 	bxmax: 14000.
 	bxmin: -14000.
 	cbcolors: 30
-	cblog: 1
+	cblog: True
 	cbmax: 10000
 	cbmin: 1
 	cbpalette: FLUKA
@@ -1375,15 +1375,146 @@ Plot: MOLLER-hallA_52_plot
 	swap: 0
 	title: USRBIN MOLLER-hallA 52
 	with.0: errorbars
-	x2log: 0
+	x2log: False
 	x2tics: 0
-	xlog: 0
+	xlog: False
 	xrebin: 1
-	y2log: 0
+	y2log: False
 	y2tics: 0
-	ylog: 0
+	ylog: False
 	yrebin: 1
-	zlog: 0
+	zlog: False
 	zrebin: 1
+	ztics: 0
+End
+
+# USRBIN plot "USRBIN HallA-PVDIS run 51"
+Plot: HallA-PVDIS_run_51_plot
+	Format: .eps
+	Type:   USRBIN
+	axes: Auto
+	bymax: 60
+	bymin: -60.
+	cbcolors: 30
+	cblog: True
+	cbpalette: FLUKA
+	cbround: 0
+	cbtics: 1
+	cpd: 0
+	datafile: data_51.bnn
+	det: 1
+	errors: 0
+	geo: -Auto-
+	grid: 0
+	hist: 2D Projection
+	index: 0
+	int: 251.42302693976799
+	lw.0: 0
+	max: 1.77903457E-05
+	min: 1.35106294E-18
+	proj: Y
+	ps.0: 0
+	pt.0: 0
+	swap: 0
+	title: USRBIN HallA-PVDIS run 51
+	with.0: errorbars
+	x2log: False
+	x2tics: 0
+	xlog: False
+	xrebin: 1
+	y2log: False
+	y2tics: 0
+	ylog: False
+	yrebin: 1
+	zlog: False
+	zrebin: 1
+	ztics: 0
+End
+
+# USRBIN plot "Boundary dose accumulated PVDIS (mrem)"
+Plot: HallA-PVDIS_run_52_plot
+	Format: .eps
+	Type:   USRBIN
+	axes: Auto
+	bymax: 1558
+	bymin: 358.
+	cbcolors: 30
+	cblog: True
+	cbmax: 100
+	cbmin: 1E-1
+	cbpalette: FLUKA
+	cbround: 0
+	cbtics: 1
+	cpd: 0
+	datafile: data_52.bnn
+	det: 1
+	errors: 0
+	geo: -Auto-
+	grid: 0
+	hist: 2D Projection
+	index: 1
+	int: 808.40825604495831
+	lw.0: 0
+	max: 2.44626230E-09
+	min: 4.63973901E-15
+	norm: 8.13E13
+	proj: Y
+	ps.0: 0
+	pt.0: 0
+	swap: 0
+	title: Boundary dose accumulated PVDIS (mrem)
+	with.0: errorbars
+	x2log: False
+	x2tics: 0
+	xlabel: Z(m)
+	xlog: False
+	xrebin: 10
+	y2log: False
+	y2tics: 0
+	ylabel: X(m)
+	ylog: False
+	yrebin: 1
+	zlog: False
+	zrebin: 10
+	ztics: 0
+End
+
+# USR-1D plot "Neutron flux on roof 130C"
+Plot: HallA-PVDIS_run_53_plot
+	Format: .pdf
+	Type:   USR-1D
+	block.0: 0
+	cbcolors: 0
+	cblog: False
+	cbpalette: FLUKA
+	cbround: 0
+	cbtics: 0
+	cpd: 0
+	det.0: 0
+	file.0: data_53_tab.lis
+	grid: 0
+	index: 3
+	key.0: 1
+	lc.0: red
+	lw.0: 2
+	name.0: Detector 1
+	ndetectors: 1
+	norm.0: 4.09E20
+	ps.0: 1
+	pt.0: 0
+	show.0: 1
+	title: Neutron flux on roof 130C
+	with.0: histerror
+	x.0: 2
+	x2log: False
+	x2tics: 0
+	xlabel: MeV
+	xlog: True
+	xnorm.0: 1./MeV
+	y.0: 2
+	y2log: False
+	y2tics: 0
+	ylog: True
+	zlog: False
 	ztics: 0
 End
