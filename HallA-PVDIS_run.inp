@@ -823,7 +823,7 @@ USRBDX           -1.   NEUTRON      -53.      hall     hall6          n_roof6
 USRBDX          11.0  0.000001     1000.                            1. &
 USRBDX           -1.   NEUTRON      -53.      hall     hall7          n_roof7
 USRBDX          11.0  0.000001     1000.                            1. &
-USRBDX           -1.   NEUTRON      -53.      hall     hall8          n_roof8 
+USRBDX           -1.   NEUTRON      -53.      hall     hall8          n_roof8
 USRBDX          11.0  0.000001     1000.                            1. &
 USRBDX           -1.   NEUTRON      -53.      hall     hall9          n_roof9
 USRBDX          11.0  0.000001     1000.                            1. &
@@ -2442,7 +2442,6 @@ BEAM_AL      5 +opipe01 -ipipe01
                | +opipe13 -ipipe13 +hal_cin
 DpSH_c       5 +LDSh
 DpSH_i       5 +RDSh
-               | +CShB
 TGPB         5 +target
 BEAMVAC      5 +ipipe01
                | +ipipe02

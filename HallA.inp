@@ -2,14 +2,16 @@ TITLE
 HallA
 GLOBAL                                          1.        1.
 DEFAULTS                                                              NEW-DEFA
-BEAM            -11.       0.0     0.136       0.5       0.5          ELECTRON
-PHYSICS           1.                                                  COALESCE
-PHYSICS           3.                                                  EVAPORAT
-PHOTONUC          1.                      BLCKHOLE  @LASTMAT
-BEAMPOS          0.0       0.0     -62.5       0.0       0.0
-START         10000.
+BEAM            -5.9       0.0     0.136       0.5       0.5          ELECTRON
+PHOTONUC          1.                        VACUUM  @LASTMAT
+PHOTONUC          1.                        VACUUM  @LASTMAT          ELECTNUC
+BEAMPOS          0.0       0.0      -20.       0.0       0.0
+START          5000.
 RANDOMIZ          1.       21.
+MATERIAL         82.               11.35                          208.LEAD208
+LOW-MAT      LEAD208       82.      208.      296.                    208-PB
 MATERIAL         19.   39.0983     0.862                           0.0POTASSIU
+MATERIAL         1.0    2.0079     0.169                           2.0DEUTERIU
 MATERIAL         0.0       0.0      2.35                           0.0CONCRETE
 COMPOUND       -0.01  HYDROGEN    -0.001    CARBON -0.529107    OXYGENCONCRETE
 COMPOUND      -0.016    SODIUM    -0.002  MAGNESIU -0.033872  ALUMINUMCONCRETE
@@ -84,14 +86,47 @@ STERNHEI     10.5961    1.7418    4.2759   0.10914    3.3994          AIR4
 MATERIAL                       .00112545                              AIR5
 COMPOUND   -1.248E-4    CARBON  -.755267  NITROGEN  -.231781    OXYGENAIR
 COMPOUND   -0.012827     ARGON                                        AIR5
+* Stainless-Steel (typical)
+* Stainless-Steel is produced with Cr content ranging from
+* 4 - 19 Atomic Percent, and with C content from 0 - 4 percent.
+MATERIAL                              8.                              Stainles
+COMPOUND         18.  CHROMIUM       74.      IRON        8.    NICKELStainles
 MAT-PROP                            85.7      AIR5
 STERNHEI     10.5961    1.7418    4.2759   0.10914    3.3994          AIR5
 MAT-PROP                           139.2      SiO2
 STERNHEI      4.0029     .1385    3.0025    .08408    3.5064          SiO2
 MAT-PROP                             75.     WATER
 STERNHEI      3.5017       .24    2.8004    .09116    3.4773          WATER
+MATERIAL                           14.18                              CW70
+MATERIAL                            1.04                              BORPOLY
+COMPOUND       -0.95  POLYETHY     -0.05     BORON                    BORPOLY
+LOW-MAT        BORON        5.       -2.      296.                    BORON
+MATERIAL          5.                2.37                              BORON
+MAT-PROP                             76.     BORON
+STERNHEI      2.8477    0.0305    1.9688   0.56224    2.4512      0.14BORON
+COMPOUND        -0.3    COPPER      -0.7  TUNGSTEN                    CW70
 ASSIGNMA      VACUUM  logicMot
-ASSIGNMA         AIR      hall
+ASSIGNMA         AIR      hall    hall53
+ASSIGNMA      VACUUM   BEAMVAC
+ASSIGNMA     AL-6061   BEAM_AL
+ASSIGNMA    Stainles  SEP_PIPE
+ASSIGNMA    Stainles     Q1L_s
+ASSIGNMA    LiquidHy      TGPB
+ASSIGNMA    Stainles     Q1R_s
+ASSIGNMA        IRON     Q1L_I
+ASSIGNMA        IRON     Q1R_I
+ASSIGNMA    Stainles     Q2L_s
+ASSIGNMA    Stainles     Q2R_s
+ASSIGNMA        IRON     Q2L_I
+ASSIGNMA        IRON     Q2R_I
+ASSIGNMA    ALUMINUM    Pipe_L
+ASSIGNMA    ALUMINUM    Pipe_R
+ASSIGNMA      VACUUM   PiL_vac
+ASSIGNMA      VACUUM   PiR_vac
+ASSIGNMA    Stainles      DL_s
+ASSIGNMA    Stainles      DR_s
+ASSIGNMA    Stainles      TL_s
+ASSIGNMA    Stainles      TR_s
 ASSIGNMA     AL-6061  BL_DMPTN
 ASSIGNMA    BLCKHOLE   BLKBODY
 ASSIGNMA        Soil    Dirth1    Dirth4
@@ -765,29 +800,8 @@ ASSIGNMA        AIR2  logicMo1   Ai6_250
 ASSIGNMA        AIR3  logicMo2   Ai6_500
 ASSIGNMA        AIR4  logicMo3   Ai6_750
 ASSIGNMA        AIR5  logicMo4  Ai6_1000
-MGNFIELD         30.     0.001      0.01
-RADDECAY          1.        1.                       1008000
-* 7days intensity     4days intensity     7days intensity
-IRRPROFI     604800. 5.3053E14   345600.       0.0   604800. 5.3053E14
-* 4days intensity     7days intensity
-IRRPROFI     345600.       0.0   604800. 5.3053E14
-DCYTIMES       3600.    86400.   259200.   604800.  1209600.  2592000.
-DCYSCORE          1.                       hall_1h   hall_1h          USRBIN
-AUXSCORE      USRBIN                       hall_1h   hall_1h          EWT74
-USRBIN           10.   DOSE-EQ      -50.     2660.      400.     3060.hall_1h
-USRBIN        -2660.     -300.    -2260.      266.       35.      266. &
-DCYSCORE          2.                       hall_1d   hall_1d          USRBIN
-AUXSCORE      USRBIN                       hall_1d   hall_1d          EWT74
-USRBIN           10.   DOSE-EQ      -50.     2660.      400.     3060.hall_1d
-USRBIN        -2660.     -300.    -2260.      266.       35.      266. &
-DCYSCORE          3.                       hall_3d   hall_3d          USRBIN
-AUXSCORE      USRBIN                       hall_3d   hall_3d          EWT74
-USRBIN           10.   DOSE-EQ      -50.     2660.      400.     3060.hall_3d
-USRBIN        -2660.     -300.    -2260.      266.       35.      266. &
-DCYSCORE          4.                       hall_1w                    USRBIN
-AUXSCORE      USRBIN                       hall_1w   hall_1w          EWT74
-USRBIN           10.   DOSE-EQ      -50.     2660.      400.     3060.hall_1w
-USRBIN        -2660.     -300.    -2260.      266.       35.      266. &
+ASSIGNMA    Concrete    DpSH_c
+ASSIGNMA        IRON    DpSH_i
 USRBIN           10.  SI1MEVNE      -51.     2660.      400.     3060.hall1MeV
 USRBIN        -2660.     -300.    -2260.      266.       35.      266. &
 AUXSCORE      USRBIN                       bdoseeq   bdoseeq          EWT74
@@ -795,16 +809,123 @@ USRBIN           10.   DOSE-EQ      -52.    30000.    30358.    30000.bdoseeq
 USRBIN       -30000.      358.   -30000.       60.       75.       60. &
 USRBIN           10.      DOSE      -52.    30000.    30358.    30000.bdose
 USRBIN       -30000.      358.   -30000.       60.       75.       60. &
-ROT-DEFI                   0.0       90.       0.0       0.0       0.0Coil1
+USRBDX           -1.   NEUTRON      -53.      hall     hall1          n_roof1
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall2          n_roof2
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall3          n_roof3
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall4          n_roof4
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall5          n_roof5
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall6          n_roof6
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall7          n_roof7
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall8          n_roof8
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall     hall9          n_roof9
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall10          n_roof10
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall11          n_roof11
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall12          n_roof12
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall13          n_roof13
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall14          n_roof14
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall15          n_roof15
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall16          n_roof16
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall17          n_roof17
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall18          n_roof18
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall19          n_roof19
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall20          n_roof20
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall21          n_roof21
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall22          n_roof22
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall23          n_roof23
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall24          n_roof24
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall25          n_roof25
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall26          n_roof26
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall27          n_roof27
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall28          n_roof28
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall29          n_roof29
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall30          n_roof30
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall31          n_roof31
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall32          n_roof32
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall33          n_roof33
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall34          n_roof34
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall35          n_roof35
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall36          n_roof36
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall37          n_roof37
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall38          n_roof38
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall39          n_roof39
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall40          n_roof40
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall41          n_roof41
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall42          n_roof42
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall43          n_roof43
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall44          n_roof44
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall45          n_roof45
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall46          n_roof46
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall47          n_roof47
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall48          n_roof48
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall49          n_roof49
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall50          n_roof50
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall51          n_roof51
+USRBDX          11.0  0.000001     1000.                            1. &
+USRBDX           -1.   NEUTRON      -53.      hall    hall52          n_roof52
+USRBDX          11.0  0.000001     1000.                            1. &
+ROT-DEFI                   0.0       90.       0.0       0.0          Coil1
 ROT-DEFI                   0.0    38.571       0.0       0.0       0.0Coil2
 ROT-DEFI                   0.0   -12.857       0.0       0.0       0.0Coil3
 ROT-DEFI                   0.0   -64.286       0.0       0.0       0.0Coil4
 ROT-DEFI                   0.0  -115.714       0.0       0.0       0.0Coil5
 ROT-DEFI                   0.0  -167.143       0.0       0.0       0.0Coil6
 ROT-DEFI                   0.0   141.429       0.0       0.0       0.0Coil7
-ROT-DEFI        200.                 30.      346.     -100.   -1371.3SBS_b
+ROT-DEFI        200.                 30.      346.     -100.   -1771.3SBS_b
+ROT-DEFI        200.       0.0     105.0       0.0       0.0     -400.Arm_L
+ROT-DEFI        200.       0.0    -135.0       0.0       0.0     -400.Arm_R
 GEOBEGIN                                                              COMBNAME
     0    0          
+$start_translat 0 0 -400
 RCC boxMothe   0.0 -10000. 400. 0.0 110358. 0.0 100000.
 RCC air1       0.0 358. 400. 0.0 100000. 0.0 6700.
 RCC air2       0.0 358. 400. 0.0 100000. 0.0 10000.
@@ -824,6 +945,101 @@ RPP CBox_i     -220. 269. -298.3 231.7 -177.5 177.5
 RPP LBox       -188.5 188.5 -113. 142. 119. 159.
 RPP LBox1      -18.5 18.5 -18.5 18.5 285.1 305.1
 ZCC LBox1_i    0.0 0.0 7.4
+$end_translat
+$start_transform Arm_L
+* LEFT ARM GEOMETRY
+TRC LQ1_1_o    0.0 0.0 537. 0.0 0.0 15.5 16. 29.5
+RCC LQ1cono    0.0 0.0 537. 0.0 0.0 -21.0923 11.5
+RPP Larm_B     -335. 335. -194. 661. 537. 3000.
+RCC LQ1coni    0.0 0.0 537. 0.0 0.0 -21.0923 10.
+RCC LQ1_2_o    0.0 0.0 572.5 0.0 0.0 -20. 29.5
+RCC LQ1_1_i    0.0 0.0 537. 0.0 0.0 35.5 8.
+RCC LQ1_3_o    0.0 0.0 572.5 0.0 0.0 124. 46.
+RCC LQ1_3_i    0.0 0.0 572.5 0.0 0.0 124. 10.
+RCC LQ2_1_o    0.0 0.0 696.5 0.0 0.0 48.5 29.5
+RCC LQ2_1_i    0.0 0.0 696.5 0.0 0.0 48.5 11.
+RCC LQ2_2_o    0.0 0.0 710. 0.0 0.0 3.5 45.
+RCC LQ2_3_o    0.0 0.0 745. 0.0 0.0 262. 75.
+RCC LQ2_3_i    0.0 0.0 745. 0.0 0.0 293.5 11.
+RCC LQ2_4_o    0.0 0.0 1037. 0.0 0.0 172. 39.
+RCC LQ2_5_o    0.0 0.0 1007. 0.0 0.0 30. 29.
+TRC LQ2_4_i    0.0 0.0 1007. 0.0 0.0 202. 20. 31.5
+RPP LD_1_o     -115. 115. -180. 360. 1209. 2130.
+XCC LD_2_o     890. 1379. 703.
+XCC LD_3_o     890. 1379. 1070.5
+PLA LD_4_o     0.0 -0.6 0.385 0.0 104. 1293.
+RCC LD_1_i     0.0 0.0 1209. 0.0 0.0 300. 31.5
+RPP LDp_1      -180. 180. -194. -52. 1084. 2275.
+RPP LDSh       115. 189. -52. 47. 1423. 1489.
+RPP LDp_2      -100. 100. -280. -194. 1084. 1385.
+RPP LDp_3      -100. 100. -280. -194. 2045. 2225.
+RPP LDp_4      -335. 335. -184. 390. 2160. 3000.
+RPP LDp_5      -335. 335. -51. 210. 2275. 2780.
+RPP LDp_6      -335. 335. -184. -52. 2275. 2780.
+RPP LDp_7      -100. 100. -280. -184. 2740. 2935.
+RPP LDp_8      -150. 150. -235. -194. 400. 1084.
+RCC LDp_9      0.0 -235. 400. 0.0 41. 0.0 200.
+RPP LTbl_1     -200. 200. 380. 661. 1325. 2930.
+PLA LTbl_2     0.0 2.35 -0.4 0.0 380. 1832.
+PLA LTbl_3     0.0 -0.93 0.4 0.0 661. 1878.
+RPP LTbl_4     -200. 200. 203. 420. 1325. 1832.
+PLA LTbl_5     0.0 0.93 -0.4 0.0 203. 1423.
+RPP LTbl_6     -200. 200. 203. 420. 498. 1325.
+PLA LTbl_7     0.0 -3.31 0.4 0.0 420. 1325.
+PLA LTbl_8     -3.31 0.0 0.4 200. 420. 1325.
+PLA LTbl_9     3.31 0.0 0.4 -200. 420. 1325.
+PLA Cen_cuR1   -0.97629 0.0 0.21644 -0.5 0.0 400.
+PLA Cen_cutL   0.97629 0.0 0.21644 0.5 0.0 400.
+$end_transform
+$start_transform Arm_R
+* RIGHT ARM GEOMETRY
+TRC RQ1_1_o    0.0 0.0 537. 0.0 0.0 15.5 16. 29.5
+RCC RQ1cono    0.0 0.0 537. 0.0 0.0 -21.0923 11.5
+RCC RQ1coni    0.0 0.0 537. 0.0 0.0 -21.0923 10.
+RCC RQ1_2_o    0.0 0.0 572.5 0.0 0.0 -20. 29.5
+RPP Rarm_B     -335. 335. -194. 661. 537. 3000.
+RCC RQ1_1_i    0.0 0.0 537. 0.0 0.0 35.5 8.
+RCC RQ1_3_o    0.0 0.0 572.5 0.0 0.0 124. 46.
+RCC RQ1_3_i    0.0 0.0 572.5 0.0 0.0 124. 10.
+RCC RQ2_1_o    0.0 0.0 696.5 0.0 0.0 48.5 29.5
+RCC RQ2_1_i    0.0 0.0 696.5 0.0 0.0 48.5 11.
+RCC RQ2_2_o    0.0 0.0 710. 0.0 0.0 3.5 45.
+RCC RQ2_3_o    0.0 0.0 745. 0.0 0.0 262. 75.
+RCC RQ2_3_i    0.0 0.0 745. 0.0 0.0 293.5 11.
+RCC RQ2_4_o    0.0 0.0 1037. 0.0 0.0 172. 39.
+RCC RQ2_5_o    0.0 0.0 1007. 0.0 0.0 30. 29.
+TRC RQ2_4_i    0.0 0.0 1007. 0.0 0.0 202. 20. 31.5
+RPP RD_1_o     -115. 115. -180. 360. 1209. 2130.
+XCC RD_2_o     890. 1379. 703.
+XCC RD_3_o     890. 1379. 1070.5
+PLA RD_4_o     0.0 -0.6 0.385 0.0 104. 1293.
+RCC RD_1_i     0.0 0.0 1209. 0.0 0.0 300. 31.5
+RPP RDp_1      -180. 180. -194. -52. 1084. 2275.
+RPP RDSh       -189. -115. -52. 47. 1423. 1489.
+RPP RDp_2      -100. 100. -280. -194. 1084. 1385.
+RPP RDp_3      -100. 100. -280. -194. 2045. 2225.
+RPP RDp_4      -335. 335. -184. 390. 2160. 3000.
+RPP RDp_5      -335. 335. -51. 210. 2275. 2780.
+RPP RDp_6      -335. 335. -184. -52. 2275. 2780.
+RPP RDp_7      -100. 100. -280. -184. 2740. 2935.
+RPP RDp_8      -150. 150. -277. -236. 400. 1084.
+RCC RDp_9      0.0 -277. 400. 0.0 41. 0.0 200.
+RPP RTbl_1     -200. 200. 380. 661. 1325. 2930.
+PLA RTbl_2     0.0 2.35 -0.4 0.0 380. 1832.
+PLA RTbl_3     0.0 -0.93 0.4 0.0 661. 1878.
+RPP RTbl_4     -200. 200. 203. 420. 1325. 1832.
+PLA RTbl_5     0.0 0.93 -0.4 0.0 203. 1423.
+RPP RTbl_6     -200. 200. 203. 420. 498. 1325.
+PLA RTbl_7     0.0 -3.31 0.4 0.0 420. 1325.
+PLA RTbl_8     -3.31 0.0 0.4 200. 420. 1325.
+PLA RTbl_9     3.31 0.0 0.4 -200. 420. 1325.
+PLA Cen_cutR   -0.97629 0.0 0.21644 -0.5 0.0 400.
+PLA Cen_cuL1   0.97629 0.0 0.21644 0.5 0.0 400.
+$end_transform
+RPP RShD       73.97 199.7 -184. 161.44 2450. 2495.1
+RPP LShD       -199.7 -73.97 -184. 161.44 2450. 2495.1
+RPP CShD       -59.7 59.7 -184. -54.46 2450. 2495.1
+RPP CShB       -33. 33. -298. -166. 1500. 1566.
 $start_transform SBS_b
 * sbsBunkerRegion_s [/sbsbunker]
 RPP sbsBunke   -528. 528. -198. 198. -462. 462.
@@ -841,7 +1057,7 @@ RPP IronShi4   -495. -429. -198. 132. -330. 330.
 RPP SteelShi   -488. 488. 132. 144. -141.5 346.5
 * sbsBunkerVacuumDet1_s [/sbsbunker/sbsBunkerVacuumDet1_l]
 RPP sbsBunk1   -412.25 412.25 -197.75 131.75 -329.75 329.75
-$end_transform 
+$end_transform
 $start_transform Coil1
 RPP Sol1       -0.77 0.77 3.5 20. 600. 800.
 RPP Sol2       -1.54 1.54 8.12 15.38 604.62 795.38
@@ -850,37 +1066,38 @@ TRC Scone      0.0 0.0 597.1 0.0 0.0 7. 13.4 3.5
 XCC Sol31      13.58 610.08 7.
 XYP Sol32      610.08
 XZP Sol33      13.58
-$end_transform 
+$end_transform
 $start_transform Coil2
 RPP Sol4       -0.77 0.77 3.5 20. 600. 800.
 RPP Sol5       -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol6       -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
 $start_transform Coil3
 RPP Sol7       -0.77 0.77 3.5 20. 600. 800.
 RPP Sol8       -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol9       -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
 $start_transform Coil4
 RPP Sol10      -0.77 0.77 3.5 20. 600. 800.
 RPP Sol11      -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol12      -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
 $start_transform Coil5
 RPP Sol13      -0.77 0.77 3.5 20. 600. 800.
 RPP Sol14      -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol15      -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
 $start_transform Coil6
 RPP Sol16      -0.77 0.77 3.5 20. 600. 800.
 RPP Sol17      -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol18      -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
 $start_transform Coil7
 RPP Sol19      -0.77 0.77 3.5 20. 600. 800.
 RPP Sol20      -1.54 1.54 8.12 15.38 604.62 795.38
 RPP Sol21      -1.54 1.54 6.58 16.92 603.08 796.92
-$end_transform 
+$end_transform
+$start_translat 0 0 -400
 RCC Spipe_i    0.0 0.0 604. 0.0 0.0 193.6 3.5
 RCC Spipe_o    0.0 0.0 604.5 0.0 0.0 193.1 4.2
 XZP air_c1     5000.
@@ -930,6 +1147,10 @@ PLA dir8_c1    1. -1. 0.0 -197. 700. 6600.
 PLA dir8_c2    1. -1. 0.0 -197. 600. 6600.
 PLA dir8_c3    1. -1. 0.0 -197. 500. 6600.
 RPP dirtou9    -563.88 563.88 -489. 432. 4892. 6604.
+RPP dirtou21   496.9 563.88 150. 200. 4892. 6604.
+RPP dirtou23   500. 563.88 130. 150. 4892. 6604.
+RPP dirtou22   -563.88 -500. 130. 150. 4892. 6604.
+RPP dirtou24   -563.88 -496.9 150. 200. 4892. 6604.
 PLA dirtou10   0.0 -1.25 -1. 0.0 432. 6255.
 PLA dirtou11   0.0 1.1 -1. 0.0 -489. 6255.
 PLA dirtou19   -1. -1. 0.0 197. 432. 6600.
@@ -964,6 +1185,58 @@ RCC hal_tsub   0.0 -9615.560000000001 400. 0.0 10653.3 0.0 6472.78
 RCC hal_cout   0.0 -447. 400. 0.0 1484.74 0.0 2807.7
 * hall_cylinder_in
 RCC hal_cin    0.0 -298.3 400. 0.0 1336.04 0.0 2651.76
+XYP ht_c1      -2100.
+XYP ht_c2      -2000.
+XYP ht_c3      -1900.
+XYP ht_c4      -1800.
+XYP ht_c5      -1700.
+XYP ht_c6      -1600.
+XYP ht_c7      -1500.
+XYP ht_c8      -1400.
+XYP ht_c9      -1300.
+XYP ht_c10     -1200.
+XYP ht_c11     -1100.
+XYP ht_c12     -1000.
+XYP ht_c13     -900.
+XYP ht_c14     -800.
+XYP ht_c15     -700.
+XYP ht_c16     -600.
+XYP ht_c17     -500.
+XYP ht_c18     -400.
+XYP ht_c19     -300.
+XYP ht_c20     -200.
+XYP ht_c21     -100.
+XYP ht_c22     -0.
+XYP ht_c23     100.0
+XYP ht_c24     200.
+XYP ht_c25     300.
+XYP ht_c26     400.
+XYP ht_c27     500.
+XYP ht_c28     600.
+XYP ht_c29     700.
+XYP ht_c30     800.
+XYP ht_c31     900.
+XYP ht_c32     1000.
+XYP ht_c33     1100.
+XYP ht_c34     1200.
+XYP ht_c35     1300.
+XYP ht_c36     1400.
+XYP ht_c37     1500.
+XYP ht_c38     1600.
+XYP ht_c39     1700.
+XYP ht_c40     1800.
+XYP ht_c41     1900.
+XYP ht_c42     2000.
+XYP ht_c43     2100.
+XYP ht_c44     2200.
+XYP ht_c45     2300.
+XYP ht_c46     2400.
+XYP ht_c47     2500.
+XYP ht_c48     2600.
+XYP ht_c49     2700.
+XYP ht_c50     2800.
+XYP ht_c51     2900.
+XYP ht_c52     3000.
 * hall_vacuum_pipe
 RCC hal_pipe   0.0 0.0 -2194.8 0.0 0.0 2132.3 1.
 * hall_wall_hole
@@ -1425,7 +1698,8 @@ RCC ha_5       0.0 -447. 400. 0.0 1484.74 0.0 2738.41
 RCC ha_6       0.0 -447. 400. 0.0 1484.74 0.0 2755.74
 RCC ha_7       0.0 -447. 400. 0.0 1484.74 0.0 2773.07
 RCC ha_8       0.0 -447. 400. 0.0 1484.74 0.0 2790.4
-$start_translat 0 0 3052.9
+$end_translat
+$start_translat 0 0 2652.9
 RPP dmptun2    -137. 137. -137. 137. -25. 2788.1
 RPP dmptun3    -167. 167. -167. 167. -25. 2818.1
 RPP dmptun4    -197. 197. -198. 197. -25. 3112.8
@@ -1514,8 +1788,8 @@ ZCC viewrout   0.0 0.0 12.
 ZCC difout     0.0 0.0 25.
 PLA viewer1    1. 0.0 -1. 0.0 22. 570.
 PLA viewer2    1. 0.0 -1. 0.0 22. 570.035921
-$end_translat 
-$start_translat 0 0 5128.54
+$end_translat
+$start_translat 0 0 4728.54
 * Beam dump tunnel 7ftx7ft
 RPP dmp_tunl   -106.68000000000001 106.68000000000001 -106.68000000000001
               106.68000000000001 -508. 682.34619999999995
@@ -1810,7 +2084,198 @@ XYP p121_8     275.71699999999998
 XYP p121_9     283.33699999999999
 XYP p121_0     290.95699999999999
 XYP g122       318.89699999999999
-$end_translat 
+$end_translat
+$start_translat 0 0 129.4636
+* Beam pipe
+RCC opipe01    0.0 0.0 0.0 0.0 0.0 28.018 4.432
+RCC ipipe01    0.0 0.0 0.0 0.0 0.0 28.018 4.128
+RCC opipe02    0.0 0.0 28.018 0.0 0.0 19.01 4.75
+RCC ipipe02    0.0 0.0 28.018 0.0 0.0 19.01 4.445
+RCC opipe03    0.0 0.0 47.028 0.0 0.0 15.24 5.067
+RCC ipipe03    0.0 0.0 47.028 0.0 0.0 15.24 4.763
+RCC opipe04    0.0 0.0 62.268 0.0 0.0 37.028 5.385
+RCC ipipe04    0.0 0.0 62.268 0.0 0.0 37.028 5.08
+RCC opipe05    0.0 0.0 99.296 0.0 0.0 23.416 6.655
+RCC ipipe05    0.0 0.0 99.296 0.0 0.0 23.416 6.35
+RCC opipe06    0.0 0.0 122.712 0.0 0.0 27.622 7.925
+RCC ipipe06    0.0 0.0 122.712 0.0 0.0 27.622 7.62
+RCC opipe07    0.0 0.0 150.334 0.0 0.0 22.368 10.478
+RCC ipipe07    0.0 0.0 150.334 0.0 0.0 22.368 10.16
+RCC opipe08    0.0 0.0 172.702 0.0 0.0 94.456 10.795
+RCC ipipe08    0.0 0.0 172.702 0.0 0.0 94.456 10.478
+RCC opipe09    0.0 0.0 267.158 0.0 0.0 30.48 13.018
+RCC ipipe09    0.0 0.0 267.158 0.0 0.0 30.48 12.7
+RCC opipe10    0.0 0.0 297.638 0.0 0.0 106.204 15.558
+RCC ipipe10    0.0 0.0 297.638 0.0 0.0 106.204 15.24
+RCC opipe11    0.0 0.0 403.842 0.0 0.0 551.18 30.798
+RCC ipipe11    0.0 0.0 403.842 0.0 0.0 551.18 30.48
+RCC opipe12    0.0 0.0 955.022 0.0 0.0 1564.642 46.038
+RCC ipipe12    0.0 0.0 955.022 0.0 0.0 1564.642 45.72
+RCC opipe13    0.0 0.0 2519.664 0.0 0.0 554.776 46.038
+RCC ipipe13    0.0 0.0 2519.664 0.0 0.0 554.776 45.72
+RCC osep1      0.0 0.0 0.0 0.0 0.0 -14.7574 2.54
+TRC osep2      0.0 0.0 0.0 0.0 0.0 -2.685 2.54 3.81
+RCC osep3      0.0 0.0 -2.685 0.0 0.0 -0.13 3.81
+RCC osep4      0.0 0.0 -10.19370 0.0 0.0 -0.13 3.81
+RCC Isep1      0.0 0.0 0.0 0.0 0.0 -14.7574 2.38125
+TRC isep2      0.0 0.0 0.0 0.0 0.0 -2.685 2.38125 3.6449
+RCC Isep3      0.0 0.0 -2.685 0.0 0.0 -0.13 3.6449
+$end_translat
+$start_translat 0 0 -75.068
+RCC ospipe01   0.0 0.0 -0.01 0.0 0.0 2.2452 10.1219
+RCC ospipe11   0.0 0.0 -0.01 0.0 0.0 -2.2452 10.1219
+RCC ospipe12   0.0 0.0 -2.2552 0.0 0.0 -16.5018 7.62
+RCC ispipe01   0.0 0.0 -0.01 0.0 0.0 2.2452 7.38124
+RCC ispipe11   0.0 0.0 -0.01 0.0 0.0 -2.2452 7.38124
+RCC ispipe12   0.0 0.0 -2.2552 0.0 0.0 -16.7418 7.38124
+RCC ospipe02   0.0 0.0 2.2352 0.0 0.0 0.01 10.1219
+RCC ispipe02   0.0 0.0 2.2352 0.0 0.0 0.01 7.38124
+RCC ospipe03   0.0 0.0 2.2452 0.0 0.0 16.9446 7.62
+RCC ispipe03   0.0 0.0 2.2452 0.0 0.0 16.9446 7.4549
+RCC ospipe04   0.0 0.0 19.1898 0.0 0.0 0.01 7.62
+RCC ispipe04   0.0 0.0 19.1898 0.0 0.0 0.01 7.4549
+RCC ospipe05   0.0 0.0 19.1998 0.0 0.0 2.1682 10.1219
+RCC ispipe05   0.0 0.0 19.1998 0.0 0.0 2.1682 7.38124
+RCC ospipe06   0.0 0.0 21.368 0.0 0.0 1.05 7.7
+RCC ispipe06   0.0 0.0 21.368 0.0 0.0 1.05 7.38124
+TRC ospipe07   0.0 0.0 22.418 0.0 0.0 2.65 7.7 10.16
+TRC ispipe07   0.0 0.0 22.418 0.0 0.0 2.65 7.38124 9.8425
+RCC ospipe08   0.0 0.0 25.068 0.0 0.0 2.57356 10.16
+RCC ispipe08   0.0 0.0 25.068 0.0 0.0 2.57356 9.8425
+RCC ospipe09   0.0 0.0 27.64156 0.0 0.0 0.74 10.16
+RCC ispipe09   0.0 0.0 27.64156 0.0 0.0 0.74 9.8425
+RCC ospipe10   0.0 0.0 28.38156 0.0 0.0 3.99506 10.16
+RCC ispipe10   0.0 0.0 28.38156 0.0 0.0 3.99506 9.85
+$end_translat
+$start_translat 0 0 -110.3
+* coll_cw70_cyln [coll_CW70_Solid_1 [coll_CW70_Solid_1 [coll_CW70_Solid_2 [coll_CW70_Solid_2 [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]
+RCC coll_cw7   0.0 0.0 85.822 0.0 0.0 8. 5.
+* coll_cw70_bore_cone [coll_CW70_Solid_1 [coll_CW70_Solid_1 [coll_CW70_Solid_2 [coll_CW70_Solid_2 [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+TRC coll_cw1   0.0 0.0 85.822 0.0 0.0 8. 1.168 1.2768
+* cw70_groove_solid [coll_CW70_Solid_2 [coll_CW70_Solid_2 [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+RCC cw70_gro   0.0 0.0 86.302 0.0 0.0 0.96 5.004999999999999
+* cw70_groove_solid [coll_CW70_Solid_2 [coll_CW70_Solid_2 [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+ZCC cw70_gr1   0.0 0.0 3.905
+* cw70_groove_solid [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+RCC cw70_gr2   0.0 0.0 88.222 0.0 0.0 0.96 5.004999999999999
+* cw70_groove_solid [coll_CW70_Solid_3 [coll_CW70_Solid_3 [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+ZCC cw70_gr3   0.0 0.0 3.905
+* cw70_groove_solid [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: Second]
+RCC cw70_gr4   0.0 0.0 90.142 0.0 0.0 0.96 5.004999999999999
+* cw70_groove_solid [coll_CW70_Solid_4 [coll_CW70_Solid_4 [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: First]] Boolean: Second]
+ZCC cw70_gr5   0.0 0.0 3.905
+* cw70_groove_solid [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: Second]
+RCC cw70_gr6   0.0 0.0 92.062 0.0 0.0 0.96 5.004999999999999
+* cw70_groove_solid [coll_CW70_Solid_5 [coll_CW70_Solid_5 [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: First]] Boolean: Second]
+ZCC cw70_gr7   0.0 0.0 3.905
+* coll_cw70_cyln_outer_1 [coll_cw70_cyln_outer [coll_cw70_cyln_outer [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: Second]] Boolean: First]
+RCC coll_cw2   0.0 0.0 83.282 0.0 0.0 2.54 5.
+* coll_cw70_cyln_outer_1 [coll_cw70_cyln_outer [coll_cw70_cyln_outer [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: Second]] Boolean: First]
+ZCC coll_cw3   0.0 0.0 2.
+* cw70_groove_solid [coll_cw70_cyln_outer [coll_cw70_cyln_outer [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: Second]] Boolean: Second]
+RCC cw70_gr8   0.0 0.0 84.072 0.0 0.0 0.96 5.004999999999999
+* cw70_groove_solid [coll_cw70_cyln_outer [coll_cw70_cyln_outer [coll_CW70_Solid [coll_CW70_Solid [/logicMother/W_coll_logic]] Boolean: Second]] Boolean: Second]
+ZCC cw70_gr9   0.0 0.0 3.905
+* Coll_jacket_W [coll_jacket_W_Solid_1 [coll_jacket_W_Solid_1 [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid [coll_jacket_W_Solid [/logicMother/coll_jacket_W_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]
+RPP Coll_jac   -6.0325 6.0325 -16.002 13.0048 83.282 99.284
+PLA col_cut1   10.16 0.0 0.9962 -6.0325 0.0 93.442
+PLA col_cut2   -10.16 0.0 0.9962 6.0325 0.0 93.442
+* coll_jacket_w_bore_cone [coll_jacket_W_Solid_1 [coll_jacket_W_Solid_1 [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid [coll_jacket_W_Solid [/logicMother/coll_jacket_W_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+TRC coll_jac   0.0 0.0 85.81375 0.0 0.0 13.47025 1.16459 1.32985
+* Coll_jacket_sub_box [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_2 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid [coll_jacket_W_Solid [/logicMother/coll_jacket_W_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+RPP Coll_ja1   -5.70057 5.70057 6.909778 11.350222 97.569625 102.324375
+* Coll_jacket_sub_box [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_3 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_4 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid_5 [coll_jacket_W_Solid [coll_jacket_W_Solid [/logicMother/coll_jacket_W_logic]] Boolean: First]] Boolean: First]] Boolean: First]] Boolean: Second]
+RPP Coll_ja2   -5.70057 5.70057 -11.350222 -6.909778 97.5696255 102.324375
+* coll_cw70_cyln_subt [coll_jacket_W_Solid [coll_jacket_W_Solid [/logicMother/coll_jacket_W_logic]] Boolean: Second]
+RCC coll_cw4   0.0 0.0 83.282 0.0 0.0 10.54 5.24
+* Cu_tube_solid_1 [Cu_tube_Solid [Cu_tube_Solid [/logicMother/Cu_tube_logic]] Boolean: First]
+RCC Cu_tube_   0.0 0.0 83.282 0.0 0.0 10.54 5.24
+* Cu_tube_solid_1 [Cu_tube_Solid [Cu_tube_Solid [/logicMother/Cu_tube_logic]] Boolean: First]
+ZCC Cu_tube1   0.0 0.0 5.
+* Cu_tube_solid_1_subt [Cu_tube_Solid [Cu_tube_Solid [/logicMother/Cu_tube_logic]] Boolean: Second]
+RCC Cu_tube2   0.0 0.0 83.307 0.0 0.0 10.49 5.189
+* Cu_tube_solid_1_subt [Cu_tube_Solid [Cu_tube_Solid [/logicMother/Cu_tube_logic]] Boolean: Second]
+ZCC Cu_tube3   0.0 0.0 5.051
+* Collimator1
+RPP colout1    -4.16 4.16 -8.50 8.50 85.80 88.3
+RPP colout2    -5.40 5.40 -8.50 8.50 88.299 94.05
+* Collimator2
+RCC colout3    0.0 0.0 85.79 0.0 0.0 14.6 3.19
+RCC sievep5    0.0 0.0 100.39 0.0 0.0 2.01 3.19
+RCC colin      0.0 0.0 85.78 0.0 0.0 16.62 1.905
+TRC colin2     0.0 0.0 100.39 0.0 0.0 -14.6 1.36403 1.16591
+* Septum
+RPP septpipe   -4.5 4.5 -4.5 4.5 120.005 231.35
+RPP septpi1o   -4.2 4.2 -4.445 4.445 120.005 230.495
+RPP septpi1i   -3.81 3.81 -3.81 3.81 120.005 230.495
+RPP septout1   -68.58 68.58 -38.1 38.1 138.018 212.404
+RPP septout2   -47.75 47.75 -57.7 57.7 116.01 230.3
+RPP septin2    8.128 39. -12.5413 12.5413 138.018 212.404
+RPP septin1    -39. -8.128 -12.5414 12.5413 138.018 212.404
+RPP coil1_l    4.128 43. -25.3 25.3 119.28 231.
+RPP coil2_l    0.128 47. -38. 38. 124. 227.
+RPP coil3_l    8.128 39. -21.3 21.3 119.3 234.
+RPP coil4_l    8.128 39. -30. 30. 125. 227.
+RPP coil5_l    8.128 39. -25.3 25.3 123.5 227.
+RPP coil6_l    8.128 39. -30. 30. 124. 227.
+RPP coil1_r    -43. -4.128 -25.3 25.3 119.28 231.
+RPP coil2_r    -47. -0.128 -38. 38. 124. 227.
+RPP coil3_r    -39. -8.128 -21.3 21.3 119.3 234.
+RPP coil4_r    -39. -8.128 -30. 30. 125. 227.
+RPP coil5_r    -39. -8.128 -25.3 25.3 123.2 227.
+RPP coil6_r    -39. -8.128 -30. 30. 124. 227.
+$end_translat
+RCC target     0.0 0.0 -7.5 0.0 0.0 15. 4.
+RCC tchamb     0.0 0.0 -23.19 0.0 0.0 46.38 8.
+RCC tchamb_o   0.0 0.0 -93.825 0.0 0.0 -33. 30.48
+RPP ch_sh_1o   -29. 29. -40. 40. -93.5 -88.
+RPP ch_sh_1i   -28.5 28.5 -39.5 39.5 -93. -88.
+RPP ch_sh_11   -23. 23. -34. 34. -93.5 -88.
+RPP ch_sh_2o   -29. 29. -40. 40. -87.4 -81.9
+RPP ch_sh_3o   -29. 29. -40. 40. -132.5 -127.
+RPP ch_sh_3i   -28.5 28.5 -39.5 39.5 -132.5 -127.5
+RPP ch_sh_31   -23. 23. -34. 34. -132.5 -127.
+RCC tchamb_i   0.0 0.0 -94.065 0.0 0.0 -32.52 30.24
+RCC c_sc1_o    0.0 0.0 -44.3 0.0 0.0 2.35 20.3
+RCC c_sc1_i    0.0 0.0 -44.3 0.0 0.0 2.35 9.85
+RCC c_sc2_o    0.0 0.0 -41.95 0.0 0.0 28.3 20.3
+RCC c_sc2_i    0.0 0.0 -41.95 0.0 0.0 28.3 19.8
+RCC c_sc3_i    0.0 0.0 -13.65 0.0 0.0 2.7 19.8
+RCC c_sc3_o    0.0 0.0 -13.65 0.0 0.0 2.7 24.8
+RCC c_sc4_o    0.0 0.0 -10.95 0.0 0.0 3.25 24.8
+RCC c_sc4_i    0.0 0.0 -10.95 0.0 0.0 3.25 1.65
+TRC c_sc5_i    0.0 0.0 -7.7 0.0 0.0 9.3 1.65 1.9
+RCC c_sc5_o    0.0 0.0 -7.7 0.0 0.0 9.3 2.6
+RCC c_sc4_i1   10. 0.0 -10.95 0.0 0.0 3.25 6.3
+TRC s_pipei1   0.0 0.0 1.6 0.0 0.0 21.59 2.5 3.81
+TRC s_pipeo1   0.0 0.0 1.6 0.0 0.0 21.59 3.49 3.975
+TRC s_pipeo2   0.0 0.0 23.19 0.0 0.0 106.2736 3.975 4.15
+RCC s_pipei2   0.0 0.0 23.19 0.0 0.0 106.2736 3.81
+RCC c_sc4_i2   -10. 0.0 -10.95 0.0 0.0 3.25 6.3
+RPP bconci_1   -19.52 19.52 -8.73125 8.73125 -5.625 8.98
+RCC bconci_2   0.0 0.0 -5.625 0.0 0.0 -8.89 25.0825
+RCC bconci_3   0.0 0.0 -21.5 0.0 0.0 6.985 20.955
+PLA vc_lowo    0.0 0.99939083 0.034899497 0.0 -4.7548800 -6.4554
+PLA vc_higo    0.0 0.99939083 -0.034899497 0.0 4.7548800 -6.4554
+PLA vc_lowi    0.0 0.99939083 0.034899497 0.0 -4.27736 -6.4554
+PLA vc_higi    0.0 0.99939083 -0.034899497 0.0 4.27736 -6.4554
+PLA vc_ri      0.99619470 0.0 -0.087155743 6.3471314 0.0 -10.95
+PLA vc_ri1     -0.98599604 0.0 0.16676875 13.464869 0.0 -10.95
+PLA vc_ro      0.99619470 0.0 -0.087155743 5.8696114 0.0 -10.95
+PLA vc_ro1     -0.98599604 0.0 0.16676875 13.942389 0.0 -10.95
+PLA vc_li      -0.99619470 0.0 -0.087155743 -6.3471314 0.0 -10.95
+PLA vc_li1     0.98599604 0.0 0.16676875 -13.464869 0.0 -10.95
+PLA vc_lo      -0.99619470 0.0 -0.087155743 -5.8696114 0.0 -10.95
+PLA vc_lo1     0.98599604 0.0 0.16676875 -13.942389 0.0 -10.95
+XYP vc_back    -7.7
+PLA vc_fr_r    -0.21643961 0.0 -0.97629601 22. 0.0 113.8446
+PLA vc_fr_l    0.21643961 0.0 -0.97629601 -22. 0.0 113.8446
+RPP Skysh1     -53.975 71.12 60. 100. -229.865 -40.
+PLA Skysh3     -1. -1. 0.0 -8.255 60. -229.
+RPP Skysh4     -53.975 -8.255 60. 100. -229.865 -88.26
+RPP Skysh2     -31.115 34.925 100. 130.48 -166.365 -40.
+RPP Skysh5     -61.595 62.865 122.86 162.865 -40. 99.7
+RPP Skysh6     -53.975 -27.305 60. 100. -229.865 -188.59
 END
 * logicMother
 logicMot     5 +boxMothe -air6  -dirtou20 +air_c1
@@ -1877,6 +2342,10 @@ Dirth1       5 +dirto1_1 -(+hal_tout -hal_tsub) -hal_cout +dirtou3 -hallcut -tun
                | +dirtou17 +dirtou9 -dir7_c3 -dir8_c3 -dir6_c3
                | +dirtou18 +dirtou9 -dir7_c3 -dir8_c3 -dir6_c3
                | +dirtou19 +dirtou9 -dir7_c3 -dir8_c3 -dir6_c3
+               | +dirtou21
+               | +dirtou22
+               | +dirtou23
+               | +dirtou24
 Dirth2       5 +dirto1_2 -dir4_c3 -dirto1_1 +dirtou3 -(+dirtou5 +dir8_c3 -dir8_c3) -(+dirtou5 +dir7_c3 -dir7_c3) -
                (+dir5_3 -dir8_c3 -dir7_c3)
                | +dir5_2 -dir6_c2 -dir7_c2 -dir8_c2 -dirtou9 -dir_c3 -dirto1_2 -dirto1_1
@@ -1885,6 +2354,8 @@ Dirth2       5 +dirto1_2 -dir4_c3 -dirto1_1 +dirtou3 -(+dirtou5 +dir8_c3 -dir8_c
                | +dir5_2 +dir7_c3 -dir7_c2 -dir6_c2 -dir4_c3 -dirto1_1
                | +dirtou4 -dirtou5 -dir4_r -dir4_c3 +dir4_c2 -dirto1_1
                | +dirtou5 +dir6_c2 -dir4_c3 +dir4_c2 -dirto1_1
+               | +dirtou5 -dir6_c2 +dir8_c2 -dirto1_2 +dir4_c2 -dir4_c3
+               | +dirtou5 -dir6_c2 +dir7_c2 -dirto1_2 +dir4_c2 -dir4_c3
 Dirth3       5 +dirto1_3 -dir4_c2 -dirto1_2 +dirtou3 -(+dirtou5 +dir8_c2 -dir8_c1) -(+dirtou5 +dir7_c2 -dir7_c1) -
                (+dir5_2 -dir8_c2 -dir7_c2)
                | +dir5_1 -dir6_c1 -dir7_c1 -dir8_c1 -dirtou9 -dir_c2 -dirto1_2
@@ -1893,6 +2364,8 @@ Dirth3       5 +dirto1_3 -dir4_c2 -dirto1_2 +dirtou3 -(+dirtou5 +dir8_c2 -dir8_c
                | +dir5_1 +dir7_c2 -dir7_c1 -dir6_c1 -dir4_c2 -dirto1_2
                | +dirtou4 -dirtou5 -dir4_r -dir4_c2 +dir4_c1 -dirto1_2
                | +dirtou5 +dir6_c1 -dir4_c2 +dir4_c1 -dirto1_2
+               | +dirtou5 -dir6_c1 +dir8_c1 -dirto1_3 +dir4_c1 -dir4_c2
+               | +dirtou5 -dir6_c1 +dir7_c1 -dirto1_3 +dir4_c1 -dir4_c2
 Dirth4       5 +dirtou1 -dirto1_3 -dir_c1
                | +dirtou2 -dirto1_3 -dirtou4 +dirtou3 -(+dirtou5 +dir8_c1 -dirtou8) -(+dirtou5 +dir7_c1 -dirtou7)
                -(+dir5_1 -dir8_c1 -dir7_c1)
@@ -1952,9 +2425,161 @@ Dumpcov      5 +dirtou9 -tun4 -dirtou10 -dirtou11 -dirtou12 -dirtou13 -dirtou14 
                | +dirtou9 -tun5 -dirtou10 -dirtou11 -dirtou12 -dirtou13 -dirtou14 -dirtou15
                -dirtou16 -dirtou17 -dirtou18 -dirtou19
 Dirthlow     5 +dirtou20 -dirtou9 -dirtou4
+SEP_PIPE     5 +s_pipeo2 -s_pipei2
+* Beam Pipe
+BEAM_AL      5 +opipe01 -ipipe01
+               | +opipe02 -ipipe02
+               | +opipe03 -ipipe03
+               | +opipe04 -ipipe04
+               | +opipe05 -ipipe05
+               | +opipe06 -ipipe06
+               | +opipe07 -ipipe07
+               | +opipe08 -ipipe08
+               | +opipe09 -ipipe09
+               | +opipe10 -ipipe10
+               | +opipe11 -ipipe11
+               | +opipe12 -ipipe12
+               | +opipe13 -ipipe13 +hal_cin
+DpSH_c       5 +LDSh
+DpSH_i       5 +RDSh
+TGPB         5 +target
+BEAMVAC      5 +ipipe01
+               | +ipipe02
+               | +ipipe03
+               | +ipipe04
+               | +ipipe05
+               | +ipipe06
+               | +ipipe07
+               | +ipipe08
+               | +ipipe09
+               | +ipipe10
+               | +ipipe11
+               | +ipipe12
+               | +ipipe13 +hal_cin
+               | +s_pipei2
+               | +tchamb -target
+* ARMLEFT
+Q1L_s        5 +LQ1_1_o -LQ1_1_i -opipe02 -opipe01
+               | +LQ1_2_o -LQ1_1_i -opipe02 -opipe01
 * hall_air
-hall         5 (+hal_tin -hal_tsub -hallcut )
-               | +hal_cin
+hall         5 +hal_cin -(+Larm_B -Cen_cuR1) -LDp_8 -LDp_9 -(+LTbl_6 -LTbl_7 -LTbl_8 -LTbl_9 -Cen_cuR1) -(
+               +Rarm_B -Cen_cuL1) -RDp_8 -RDp_9 -(+RTbl_6 -RTbl_7 -RTbl_8 -RTbl_9 -Cen_cuL1) -opipe01 -opipe02
+               -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -opipe08 -opipe09 -opipe10 -opipe11 -opipe12 -opipe13
+               -s_pipeo2 -RDp_2 -LDp_2 -RDp_3 -LDp_3 -RDp_7 -LDp_7 -tchamb
+               | +Rarm_B -Cen_cuL1 -RQ1_1_o -RQ1_2_o -(+RQ1_3_o -Cen_cuL1) -RQ2_1_o -RQ2_3_o -RQ2_4_o -RQ2_5_o -(
+               +RD_1_o -RD_2_o +RD_3_o -RD_4_o) -(+RDp_1 -Cen_cuL1) -RDp_2 -RDp_3 -(+RTbl_1 -RTbl_2 -RTbl_3) -(
+               +RTbl_4 -RTbl_5) -(+RDp_4 -RDp_5 -RDp_6) -RDp_7 -(+RTbl_6 -RTbl_7 -RTbl_8 -RTbl_9 -Cen_cuL1)
+               -RDp_8 -RDp_9 -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -opipe08 -opipe09
+               -opipe10 -opipe11 -opipe12 -RDSh
+               | +Larm_B -Cen_cuR1 -LQ1_1_o -LQ1_2_o -(+LQ1_3_o -Cen_cuR1) -LQ2_1_o -LQ2_3_o -LQ2_4_o -LQ2_5_o -(
+               +LD_1_o -LD_2_o +LD_3_o -LD_4_o) -(+LDp_1 -Cen_cuR1) -LDp_2 -LDp_3 -(+LTbl_1 -LTbl_2 -LTbl_3) -(
+               +LTbl_4 -LTbl_5) -(+LDp_4 -LDp_5 -LDp_6) -LDp_7 -(+LTbl_6 -LTbl_7 -LTbl_8 -LTbl_9 -Cen_cuR1)
+               -LDp_8 -LDp_9 -opipe01 -opipe02 -opipe03 -opipe04 -opipe05 -opipe06 -opipe07 -opipe08 -opipe09
+               -opipe10 -opipe11 -opipe12 -LDSh
+               | +ch_sh_1i -ospipe12
+               | +ch_sh_11 -ospipe12
+               | +ch_sh_3i
+               | +ch_sh_31
+hall1        5 +hal_tin -hal_tsub -hallcut +ht_c1
+hall2        5 +hal_tin -hal_tsub -hallcut +ht_c2 -ht_c1
+hall3        5 +hal_tin -hal_tsub -hallcut +ht_c3 -ht_c2
+hall4        5 +hal_tin -hal_tsub -hallcut +ht_c4 -ht_c3
+hall5        5 +hal_tin -hal_tsub -hallcut +ht_c5 -ht_c4
+hall6        5 +hal_tin -hal_tsub -hallcut +ht_c6 -ht_c5
+hall7        5 +hal_tin -hal_tsub -hallcut +ht_c7 -ht_c6
+hall8        5 +hal_tin -hal_tsub -hallcut +ht_c8 -ht_c7
+hall9        5 +hal_tin -hal_tsub -hallcut +ht_c9 -ht_c8
+hall10       5 +hal_tin -hal_tsub -hallcut +ht_c10 -ht_c9
+hall11       5 +hal_tin -hal_tsub -hallcut +ht_c11 -ht_c10
+hall12       5 +hal_tin -hal_tsub -hallcut +ht_c12 -ht_c11
+hall13       5 +hal_tin -hal_tsub -hallcut +ht_c13 -ht_c12
+hall14       5 +hal_tin -hal_tsub -hallcut +ht_c14 -ht_c13
+hall15       5 +hal_tin -hal_tsub -hallcut +ht_c15 -ht_c14
+hall16       5 +hal_tin -hal_tsub -hallcut +ht_c16 -ht_c15
+hall17       5 +hal_tin -hal_tsub -hallcut +ht_c17 -ht_c16
+hall18       5 +hal_tin -hal_tsub -hallcut +ht_c18 -ht_c17
+hall19       5 +hal_tin -hal_tsub -hallcut +ht_c19 -ht_c18
+hall20       5 +hal_tin -hal_tsub -hallcut +ht_c20 -ht_c19
+hall21       5 +hal_tin -hal_tsub -hallcut +ht_c21 -ht_c20
+hall22       5 +hal_tin -hal_tsub -hallcut +ht_c22 -ht_c21
+hall23       5 +hal_tin -hal_tsub -hallcut +ht_c23 -ht_c22
+hall24       5 +hal_tin -hal_tsub -hallcut +ht_c24 -ht_c23
+hall25       5 +hal_tin -hal_tsub -hallcut +ht_c25 -ht_c24
+hall26       5 +hal_tin -hal_tsub -hallcut +ht_c26 -ht_c25
+hall27       5 +hal_tin -hal_tsub -hallcut +ht_c27 -ht_c26
+hall28       5 +hal_tin -hal_tsub -hallcut +ht_c28 -ht_c27
+hall29       5 +hal_tin -hal_tsub -hallcut +ht_c29 -ht_c28
+hall30       5 +hal_tin -hal_tsub -hallcut +ht_c30 -ht_c29
+hall31       5 +hal_tin -hal_tsub -hallcut +ht_c31 -ht_c30
+hall32       5 +hal_tin -hal_tsub -hallcut +ht_c32 -ht_c31
+hall33       5 +hal_tin -hal_tsub -hallcut +ht_c33 -ht_c32
+hall34       5 +hal_tin -hal_tsub -hallcut +ht_c34 -ht_c33
+hall35       5 +hal_tin -hal_tsub -hallcut +ht_c35 -ht_c34
+hall36       5 +hal_tin -hal_tsub -hallcut +ht_c36 -ht_c35
+hall37       5 +hal_tin -hal_tsub -hallcut +ht_c37 -ht_c36
+hall38       5 +hal_tin -hal_tsub -hallcut +ht_c38 -ht_c37
+hall39       5 +hal_tin -hal_tsub -hallcut +ht_c39 -ht_c38
+hall40       5 +hal_tin -hal_tsub -hallcut +ht_c40 -ht_c39
+hall41       5 +hal_tin -hal_tsub -hallcut +ht_c41 -ht_c40
+hall42       5 +hal_tin -hal_tsub -hallcut +ht_c42 -ht_c41
+hall43       5 +hal_tin -hal_tsub -hallcut +ht_c43 -ht_c42
+hall44       5 +hal_tin -hal_tsub -hallcut +ht_c44 -ht_c43
+hall45       5 +hal_tin -hal_tsub -hallcut +ht_c45 -ht_c44
+hall46       5 +hal_tin -hal_tsub -hallcut +ht_c46 -ht_c45
+hall47       5 +hal_tin -hal_tsub -hallcut +ht_c47 -ht_c46
+hall48       5 +hal_tin -hal_tsub -hallcut +ht_c48 -ht_c47
+hall49       5 +hal_tin -hal_tsub -hallcut +ht_c49 -ht_c48
+hall50       5 +hal_tin -hal_tsub -hallcut +ht_c50 -ht_c49
+hall51       5 +hal_tin -hal_tsub -hallcut +ht_c51 -ht_c50
+hall52       5 +hal_tin -hal_tsub -hallcut +ht_c52 -ht_c51
+hall53       5 +hal_tin -hal_tsub -hallcut -ht_c52
+Q1L_I        5 +LQ1_3_o -LQ1_3_i -opipe04 -opipe05 -opipe06 -opipe03 -opipe02 -Cen_cuR1
+Q2L_s        5 +LQ2_1_o -LQ2_1_i
+Q2L_I        5 +LQ2_3_o -LQ2_3_i -opipe08 -opipe09 +Cen_cutR
+Pipe_L       5 +LQ2_4_o -LQ2_4_i
+               | +LQ2_5_o -LQ2_4_i
+PiL_vac      5 +LQ1_1_i
+               | +LQ1_3_i
+               | +LQ2_1_i
+               | +LQ2_3_i
+               | +LQ2_4_i
+               | +LD_1_i
+DL_s         5 +LD_1_o -LD_2_o +LD_3_o -LD_4_o -LD_1_i
+               | +LDp_1 -Cen_cuR1
+               | +LDp_2
+               | +LDp_3
+               | +LDp_4 -LDp_5 -LDp_6
+               | +LDp_7
+               | +LDp_8
+               | +LDp_9
+TL_s         5 +LTbl_1 -LTbl_2 -LTbl_3
+               | +LTbl_4 -LTbl_5
+               | +LTbl_6 -LTbl_7 -LTbl_8 -LTbl_9 -Cen_cuR1
+* ARMRIGHT
+Q1R_s        5 +RQ1_1_o -RQ1_1_i -opipe02 -opipe01
+               | +RQ1_2_o -RQ1_1_i -opipe02 -opipe01
+Q1R_I        5 +RQ1_3_o -RQ1_3_i -opipe04 -opipe05 -opipe06 -opipe03 -opipe02 -Cen_cuL1
+Q2R_s        5 +RQ2_1_o -RQ2_1_i
+Q2R_I        5 +RQ2_3_o -RQ2_3_i -opipe08 -opipe09 +Cen_cutL
+Pipe_R       5 +RQ2_4_o -RQ2_4_i
+               | +RQ2_5_o -RQ2_4_i
+PiR_vac      5 +RQ1_1_i
+               | +RQ1_3_i
+               | +RQ2_1_i
+               | +RQ2_3_i
+               | +RQ2_4_i
+               | +RD_1_i
+DR_s         5 +RD_1_o -RD_2_o +RD_3_o -RD_4_o -RD_1_i
+               | +RDp_1 -Cen_cuL1
+               | +RDp_2
+               | +RDp_3
+               | +RDp_4 -RDp_5 -RDp_6
+               | +RDp_7
+               | +RDp_8
+               | +RDp_9
+TR_s         5 +RTbl_1 -RTbl_2 -RTbl_3
+               | +RTbl_4 -RTbl_5
+               | +RTbl_6 -RTbl_7 -RTbl_8 -RTbl_9 -Cen_cuL1
 * Blackbody everything outside world: BLKBODY
 BLKBODY      5 -(+boxMothe)
 BL_DMPTN     5 +pl20 +blout -blin -hal_cin -hal_cin
@@ -3279,44 +3904,46 @@ HEBLIN       5 +heblin +dmppl1 -hewin2 +pl1830
 END
 GEOEND
 STOP
-BIASING          0.0              0.0001  Dirthlow    HEBLIN        1.
-BIASING          0.0              0.0001     WALL1     WALL1        1.
-BIASING          0.0              0.0001     WALL2     WALL2        1.
-BIASING          0.0              0.0001     WALL3     WALL3        1.
-BIASING          0.0              0.0001     WALL4                  1.
-BIASING          0.0              0.0001     WALL5                  1.
-BIASING          0.0              0.0005     WALL6                  1.
-BIASING          0.0              0.0025     WALL6                  1.
-BIASING          0.0              0.0125     WALL8                  1.
-BIASING          0.0              0.0625     WALL9   Dumpcov        1.
-BIASING          0.0              0.3125    Dirth1                  1.
-BIASING          0.0              1.5625    Dirth2                  1.
-BIASING          0.0              7.8125    Dirth3                  1.
-BIASING          0.0              39.065    Dirth4                  1.
-BIASING          0.0            195.3125    Ai1_50    Ai1_50        1.
-BIASING          0.0                900.   Ai1_250   Ai1_250        1.
-BIASING          0.0                900.   Ai1_500   Ai1_500        1.
-BIASING          0.0                900.   Ai1_750   Ai1_750        1.
-BIASING          0.0                900.  Ai1_1000  Ai1_1000        1.
-BIASING          0.0                900.    Ai3_50    Ai3_50        1.
-BIASING          0.0                900.   Ai3_250   Ai3_250        1.
-BIASING          0.0                900.   Ai3_500   Ai3_500        1.
-BIASING          0.0                900.   Ai3_750   Ai3_750        1.
-BIASING          0.0                900.  Ai3_1000  Ai3_1000        1.
-BIASING          0.0               4500.    Ai5_50    Ai5_50        1.
-BIASING          0.0               4500.   Ai5_250   Ai5_250        1.
-BIASING          0.0               4500.   Ai5_500   Ai5_500        1.
-BIASING          0.0               4500.   Ai5_750   Ai5_750        1.
-BIASING          0.0               4500.  Ai5_1000  Ai5_1000        1.
-BIASING          0.0               4500.    Ai6_50    Ai6_50        1.
-BIASING          0.0               4500.   Ai6_250   Ai6_250        1.
-BIASING          0.0               4500.   Ai6_500   Ai6_500        1.
-BIASING          0.0               4500.   Ai6_750   Ai6_750        1.
-BIASING          0.0               4500.  Ai6_1000  Ai6_1000        1.
-BIASING          0.0               4500.  logicMot  logicMot        1.
-BIASING          0.0               4500.  logicMo1  logicMo1        1.
-BIASING          0.0               4500.  logicMo2  logicMo2        1.
-BIASING          0.0               4500.  logicMo3  logicMo3        1.
-BIASING          0.0               4500.  logicMo4  logicMo4        1.
+BIASING          0.0              0.0001      TGPB   BEAMVAC        1.
+BIASING          0.0              0.0005  Dirthlow    DpSH_i        1.
+BIASING          0.0              0.0005     Q1L_s    HEBLIN        1.
+BIASING          0.0              0.0010     WALL1     WALL1        1.
+BIASING          0.0               0.002     WALL2     WALL2        1.
+BIASING          0.0               0.005     WALL3     WALL3        1.
+BIASING          0.0               0.005     WALL4                  1.
+BIASING          0.0               0.005     WALL5                  1.
+BIASING          0.0               0.025     WALL6                  1.
+BIASING          0.0               0.125     WALL7                  1.
+BIASING          0.0               0.625     WALL8                  1.
+BIASING          0.0               3.125     WALL9   Dumpcov        1.
+BIASING          0.0              15.625    Dirth1                  1.
+BIASING          0.0              78.125    Dirth2                  1.
+BIASING          0.0              390.65    Dirth3                  1.
+BIASING          0.0            1953.125    Dirth4                  1.
+BIASING          0.0               9000.    Ai1_50    Ai1_50        1.
+BIASING          0.0              45000.   Ai1_250   Ai1_250        1.
+BIASING          0.0              45000.   Ai1_500   Ai1_500        1.
+BIASING          0.0              45000.   Ai1_750   Ai1_750        1.
+BIASING          0.0              45000.  Ai1_1000  Ai1_1000        1.
+BIASING          0.0              45000.    Ai3_50    Ai3_50        1.
+BIASING          0.0              45000.   Ai3_250   Ai3_250        1.
+BIASING          0.0              45000.   Ai3_500   Ai3_500        1.
+BIASING          0.0              45000.   Ai3_750   Ai3_750        1.
+BIASING          0.0              45000.  Ai3_1000  Ai3_1000        1.
+BIASING          0.0             100000.    Ai5_50    Ai5_50        1.
+BIASING          0.0             100000.   Ai5_250   Ai5_250        1.
+BIASING          0.0             100000.   Ai5_500   Ai5_500        1.
+BIASING          0.0             100000.   Ai5_750   Ai5_750        1.
+BIASING          0.0             100000.  Ai5_1000  Ai5_1000        1.
+BIASING          0.0             100000.    Ai6_50    Ai6_50        1.
+BIASING          0.0             100000.   Ai6_250   Ai6_250        1.
+BIASING          0.0             100000.   Ai6_500   Ai6_500        1.
+BIASING          0.0             100000.   Ai6_750   Ai6_750        1.
+BIASING          0.0             100000.  Ai6_1000  Ai6_1000        1.
+BIASING          0.0             100000.  logicMot  logicMot        1.
+BIASING          0.0             100000.  logicMo1  logicMo1        1.
+BIASING          0.0             100000.  logicMo2  logicMo2        1.
+BIASING          0.0             100000.  logicMo3  logicMo3        1.
+BIASING          0.0             100000.  logicMo4  logicMo4        1.
 LAM-BIAS                  0.02              PHOTON    PHOTON
 STOP

@@ -2,16 +2,21 @@
 # FLUKA Project file
 Version: 2
 Title: HallA
-Input: HallA-PVDIS_run.inp
+Input: HallA-SBS_run.inp
 Submit: *Default
 Notes:
 {img:MOLLER-hallA_plot05.png}
 Tabs: 0.1 0.32 0.56 0.81 1.0
-Page: Geometry
+Page: Input
 DefMain: True
 LinkPrg: lfluka
 F77bound: True
 F77dline: False
+
+# Properties
+Properties: Input
+	RCC/RQ2_3_o/@select: 1
+End
 
 # Run information
 Run: <default>
@@ -21,7 +26,7 @@ Run: <default>
 	Pid:      0
 	StartRun: 1623700905
 
-	# USRxxx data file: HallA-PVDIS_run_51.bnn
+	# USRxxx data file: HallA-SBS_run_51.bnn
 	Data: \I_\U.\e
 		Unit: 51
 		Type: b
@@ -29,7 +34,7 @@ Run: <default>
 		Rule: +,\I\d\d\d_ftn\.\U
 	End
 
-	# USRxxx data file: HallA-PVDIS_run_52.bnn
+	# USRxxx data file: HallA-SBS_run_52.bnn
 	Data: \I_\U.\e
 		Unit: 52
 		Type: b
@@ -37,7 +42,7 @@ Run: <default>
 		Rule: +,\I\d\d\d_ftn\.\U
 	End
 
-	# USRxxx data file: HallA-PVDIS_run_53.bnx
+	# USRxxx data file: HallA-SBS_run_53.bnx
 	Data: \I_\U.\e
 		Unit: 53
 		Type: x
@@ -268,9 +273,9 @@ End
 
 # Geometry Information
 Geometry:
-	Frame.bsplit: 0.01
+	Frame.bsplit: 0.5
 	Frame.tsplit: 0.5
-	Frame.vsplit: 0.01
+	Frame.vsplit: 0.5
 
 	# Layer
 	Layer: Media
@@ -365,12 +370,12 @@ Plot: Red
 	cbtics: 0
 	coord: X-Y
 	cpd: 0
-	extends: 3427.76 2169.4
+	extends: 1377.54 871.832
 	grid: 0
 	index: 0
 	labels: 1
 	layer: Media
-	origin: 0 0 0
+	origin: 168.998 203.454 0
 	subtype: Material
 	title: GeoViewer Red plot
 	x2log: False
@@ -387,14 +392,14 @@ End
 Plot: Green
 	Format: .eps
 	Type:   Geometry
-	basisu: 0 -1 0
-	basisv: 0 0 -1
+	basisu: 0 0 1
+	basisv: 0 1 0
 	boundaries: 1
-	coord: Y-Z
-	extends: 102067 64597.2
+	coord: Z-Y
+	extends: 99.9993 63.2886
 	labels: 1
 	layer: Media
-	origin: 41916.7 4279.38 32135.6
+	origin: 0 988.341 2577.5
 	subtype: Material
 	title: GeoViewer Green plot
 End
@@ -407,10 +412,10 @@ Plot: Blue
 	basisv: 0 0 1
 	boundaries: 1
 	coord: X-Z
-	extends: 29.8669 1134.94
+	extends: 383.467 242.055
 	labels: 1
 	layer: Media
-	origin: -1.12455 0 -3.89198
+	origin: 263.713 0 -434.653
 	subtype: Material
 	title: GeoViewer Blue plot
 End
@@ -419,8 +424,8 @@ End
 Plot: Magenta
 	Format: .eps
 	Type:   Geometry
-	basisu: -0.578718 0.0146769 0.815395
-	basisv: 0.197585 0.972573 0.122728
+	basisu: -0.527754 0 0.849398
+	basisv: 0.225542 0.964102 0.140135
 	boundaries: 1
 	cbcolors: 0
 	cblog: 0
@@ -429,12 +434,12 @@ Plot: Magenta
 	cbtics: 0
 	coord: U-V
 	cpd: 0
-	extends: 2662.33 1680.54
+	extends: 4600.51 2903.98
 	grid: 0
 	index: 0
 	labels: 1
-	layer: 3D
-	origin: -11.3885 616.638 127.781
+	layer: Media
+	origin: -374.343 697.541 437.126
 	subtype: Material
 	title: GeoViewer Magenta plot
 	x2log: 0
@@ -1490,8 +1495,8 @@ Plot: HallA-PVDIS_run_53_plot
 	cbround: 0
 	cbtics: 0
 	cpd: 0
-	det.0: 0
-	file.0: data_53_tab.lis
+	det.0: 2
+	file.0: data_usrbdx_53_tab.lis
 	grid: 0
 	index: 3
 	key.0: 1
